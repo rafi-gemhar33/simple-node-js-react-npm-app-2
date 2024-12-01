@@ -36,35 +36,25 @@ pipeline {
             }
         }
         post {
-            success {
-                emailext (
-                    subject: "Pipeline Success: ${currentBuild.fullDisplayName}",
-                    body: """
-                        Build succeeded!
-                        
-                        Build URL: ${env.BUILD_URL}
-                        Project: ${env.JOB_NAME}
+            always {
+                script {
+                    def emailBody = """
+                        Job: ${env.JOB_NAME}
                         Build Number: ${env.BUILD_NUMBER}
-                        """,
-                    recipientProviders: [[$class: 'DevelopersRecipientProvider']],
-                    to: 'gemhar.rafis@gmail.com'
-                )
-            }
-            failure {
-                emailext (
-                    subject: "Pipeline Failed: ${currentBuild.fullDisplayName}",
-                    body: """
-                        Build failed!
-                        
                         Build URL: ${env.BUILD_URL}
-                        Project: ${env.JOB_NAME}
-                        Build Number: ${env.BUILD_NUMBER}
+                        Status: ${currentBuild.result ?: 'SUCCESS'}
                         
-                        Check console output at ${env.BUILD_URL}console
-                        """,
-                    recipientProviders: [[$class: 'DevelopersRecipientProvider']],
-                    to: 'gemhar.rafis@gmail.com'
-                )
+                        Check console output at: ${env.BUILD_URL}console
+                    """
+                    
+                    emailext (
+                        subject: "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} - ${currentBuild.result ?: 'SUCCESS'}",
+                        body: emailBody,
+                        to: 'gemhar.rafis@gmail.com',
+                        from: 'gemhar.study@gmail.comm',
+                        replyTo: ''
+                    )
+                }
             }
         }
     }
