@@ -1,6 +1,4 @@
-import React, {StrictMode} from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+/* eslint no-use-before-define: 0 */  // --> OFF
 
 // This test will fail
 it('should fail', () => {
