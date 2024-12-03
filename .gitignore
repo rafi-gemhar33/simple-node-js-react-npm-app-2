@@ -63,3 +63,5 @@ build
 
 node_modules 
 .eslintcache
+
+commands.md
