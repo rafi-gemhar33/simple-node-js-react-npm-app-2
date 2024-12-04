@@ -6,6 +6,6 @@ it('should fail', () => {
 });
 
 // // This test will fail
-// it('should fail', () => {
-//   expect(true).toBe(false);  // This will always fail
-// });
+it('should fail', () => {
+  expect(true).toBe(false);  // This will always fail
+});
