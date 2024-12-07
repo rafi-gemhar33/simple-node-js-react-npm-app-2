@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-var test = "fail the github action"
+// var test = "fail the github action"
 
 class App extends Component {
   render() {
