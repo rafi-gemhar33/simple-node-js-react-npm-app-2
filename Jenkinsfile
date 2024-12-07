@@ -16,14 +16,15 @@ pipeline {
                 }
             }
             stage('Static Code Analysis') {
-                environment {
+               environment {
                     SONAR_URL = "http://20.187.54.124:9000"
                 }
                 steps {
                     withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
-                        sh 'npm install sonar-scanner'
+                        sh 'npm install sonar-scanner --save-dev'  // Install as dev dependency
+                        sh 'chmod +x ./node_modules/.bin/sonar-scanner'  // Make scanner executable
                         sh """
-                            npx sonar-scanner \
+                            ./node_modules/.bin/sonar-scanner \
                             -Dsonar.projectKey=react-app \
                             -Dsonar.sources=. \
                             -Dsonar.host.url=\${SONAR_URL} \
