@@ -15,6 +15,23 @@ pipeline {
                     sh 'npm install'
                 }
             }
+            stage('Static Code Analysis') {
+                environment {
+                    SONAR_URL = "http://20.187.54.124:9000"
+                }
+                steps {
+                    withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
+                        sh 'npm install sonar-scanner'
+                        sh """
+                            npx sonar-scanner \
+                            -Dsonar.projectKey=react-app \
+                            -Dsonar.sources=. \
+                            -Dsonar.host.url=\${SONAR_URL} \
+                            -Dsonar.login=\${SONAR_AUTH_TOKEN}
+                        """
+                    }
+                }
+            }
             stage('Test') {
                 steps {
                     sh 'chmod +rx ./jenkins/scripts/*.sh'
