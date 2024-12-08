@@ -76,22 +76,8 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                     sh '''
-                        rm -rf manifest-repo || true
-                        git clone https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${MANIFEST_REPO_NAME}.git manifest-repo
-                        cd manifest-repo
-                        
-                        git config user.email "gemhar.rafis@gmail.com"
-                        git config user.name "rafi-gemhar33"
-                        
-                        BUILD_NUMBER=${BUILD_NUMBER}
-                        sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" kubernetes/deployment.yml
-                        
-                        git add kubernetes/deployment.yml
-                        git commit -m "Update deployment image to version ${BUILD_NUMBER}"
-                        git push origin HEAD:main
-                        
-                        cd ..
-                        rm -rf manifest-repo
+                        chmod +x jenkins/scripts/deploy.sh
+                        ./jenkins/scripts/deploy.sh
                     '''
                 }
             }
