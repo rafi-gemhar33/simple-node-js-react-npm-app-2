@@ -29,6 +29,18 @@ const App = () => {
             <li>Integrate monitoring and quality assurance tools</li>
           </ul>
         </div>
+
+        <div className="key-objectives">
+          <h4>2.2 React Application Setup</h4>
+          <ul>
+            <li>We used a simple CRA react application with just node & npm as dependency for the reduced complexity.</li>
+            <li>Made sure the exposed port of the app is <@ip-address>:30007</li>
+          </ul>
+        </div>
+        
+
+
+
       </main>
     </div>
   );
