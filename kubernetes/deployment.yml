@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: react-app
-        image: gemharrafi/react-app:replaceImageTag
+        image: gemharrafi/react-app:13
         ports:
         - containerPort: 80
