@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:16-buster-slim'
-            args '-p 3000:3000 --user root:root'
-        }
-    }
+    agent any
     
     environment {
         DOCKER_IMAGE = "gemharrafi/react-app:${BUILD_NUMBER}"
@@ -13,6 +8,12 @@ pipeline {
     
     stages {
         stage('Build react-app') {
+            agent {
+                docker {
+                    image 'node:16-buster-slim'
+                    args '-p 3000:3000 --user root:root'
+                }
+            }
             steps {
                 sh 'npm install'
                 sh 'npm run build'
@@ -37,17 +38,18 @@ pipeline {
                 SONAR_URL = "http://localhost:9000"
             }
             steps {
-                withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
-                    sh 'npm install sonar-scanner'
-                    // sh """
-                    //     npx sonar-scanner \
-                    //     -Dsonar.projectKey=react-app \
-                    //     -Dsonar.sources=. \
-                    //     -Dsonar.host.url=\${SONAR_URL} \
-                    //     -Dsonar.login=\${SONAR_AUTH_TOKEN}
-                    // """
-                    echo 'skipping Static Code Analysis.... due to permission error'
-                }
+                // withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
+                //     sh 'npm install sonar-scanner'
+                //     sh """
+                //         npx sonar-scanner \
+                //         -Dsonar.projectKey=react-app \
+                //         -Dsonar.sources=. \
+                //         -Dsonar.host.url=\${SONAR_URL} \
+                //         -Dsonar.login=\${SONAR_AUTH_TOKEN}
+                //     """
+                // }
+
+                echo 'skipping Static Code Analysis.... due to permission error'
             }
         }
         
