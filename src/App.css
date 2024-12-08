@@ -1,28 +1,102 @@
+/* App.css */
 .App {
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  font-family: 'Arial', sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  min-height: 100vh;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+  background-color: #2c3e50;
   color: white;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 2.5em;
+  margin: 0;
+  color: #ecf0f1;
+  font-weight: 300;
 }
 
-.App-intro {
-  font-size: large;
+.project-overview {
+  background-color: white;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.project-overview h2 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.project-overview h3 {
+  color: #34495e;
+  margin-bottom: 15px;
+}
+
+.project-overview p {
+  color: #2c3e50;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.key-objectives {
+  background-color: #f9f9f9;
+  border-left: 4px solid #3498db;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.key-objectives h4 {
+  color: #2980b9;
+  margin-bottom: 15px;
+}
+
+.key-objectives ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.key-objectives ul li {
+  background-color: #ecf0f1;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  color: #2c3e50;
+  position: relative;
+  padding-left: 30px;
+}
+
+.key-objectives ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 10px;
+  color: #2ecc71;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .App {
+    padding: 10px;
+  }
+
+  .App-title {
+    font-size: 2em;
+  }
+
+  .project-overview,
+  .key-objectives {
+    padding: 15px;
+  }
 }
