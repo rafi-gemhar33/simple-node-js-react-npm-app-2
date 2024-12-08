@@ -1,5 +1,9 @@
 pipeline {
     agent any
+
+    triggers {
+        githubPush()
+    }
     
     environment {
         DOCKER_IMAGE = "gemharrafi/react-app:${BUILD_NUMBER}"
@@ -66,7 +70,7 @@ pipeline {
         
         stage('Update Deployment File') {
             environment {
-                GIT_REPO_NAME = "simple-node-js-react-npm-app-2"
+                GIT_REPO_NAME = "simple-node-js-manisfest"
                 GIT_USER_NAME = "rafi-gemhar33"
             }
             steps {
@@ -78,7 +82,7 @@ pipeline {
                         sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" kubernetes/deployment.yml
                         git add kubernetes/deployment.yml
                         git commit -m "Update deployment image to version ${BUILD_NUMBER}"
-                        git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:argo-cd
+                        git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
                     '''
                 }
             }

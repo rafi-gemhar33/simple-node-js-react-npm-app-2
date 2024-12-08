@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/rafi-gemhar33/simple-node-js-react-npm-app-2.git
+    repoURL: https://github.com/rafi-gemhar33/simple-node-js-manisfest.git
     targetRevision: main
     path: kubernetes  # This points to the directory containing your k8s manifests
   destination:
