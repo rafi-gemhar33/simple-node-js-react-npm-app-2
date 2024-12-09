@@ -39,6 +39,13 @@ const App = () => {
         </div>
         
 
+        <div className="key-objectives">
+          <h4>3.1 CI CD Setup</h4>
+          <ul>
+            <li>We used minilkube & kubectl via argo-cd to deploy our app.</li>
+            <li>Made sure the exposed port of the app is public-ip-address:30007</li>
+          </ul>
+        </div>
 
 
       </main>
