@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 
 const App = () => {
-  var a = "fail the github action";
   return (
     <div className="App">
       <header className="App-header">
