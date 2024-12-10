@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 
 const App = () => {
+  // var test = "fail";
   return (
     <div className="App">
       <header className="App-header">
@@ -43,6 +44,14 @@ const App = () => {
           <h4>3.1 CI CD Setup</h4>
           <ul>
             <li>We used minilkube & kubectl via argo-cd to deploy our app.</li>
+            <li>Made sure the exposed port of the app is public-ip-address:30007</li>
+          </ul>
+        </div>
+
+        <div className="key-objectives">
+          <h4>4 Conclusion</h4>
+          <ul>
+            <li>This project successfully demonstrated the implementation of modern DevOps practices in a React application deployment</li>
             <li>Made sure the exposed port of the app is public-ip-address:30007</li>
           </ul>
         </div>
