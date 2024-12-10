@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 const App = () => {
-  var test = "fail";
+  // var test = "fail";
   return (
     <div className="App">
       <header className="App-header">
