@@ -9,7 +9,7 @@ const App = () => {
       </header>
       
       <main className="project-overview">
-        <h2>1. Introduction</h2>
+        <h2>1. Introduction...</h2>
         <h3>1.1 Project Overview</h3>
         
         <p>
